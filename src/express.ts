@@ -19,7 +19,8 @@ appExpress.disable('x-powered-by')
 //   optionsSuccessStatus: 200
 // }
 
-appExpress.use(express.json(), cors())
+appExpress.use(express.json())
+appExpress.use(cors())
 
 appExpress.use('/send', sendRouter)
 
