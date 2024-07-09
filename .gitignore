@@ -4,5 +4,5 @@
 # environments
 .env
 
-#firebase
-firebase.json
+#build
+/build
