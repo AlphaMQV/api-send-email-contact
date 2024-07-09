@@ -1,4 +1,4 @@
-import cors, { type CorsOptions } from 'cors'
+import cors from 'cors'
 import express from 'express'
 import { sendRouter } from './routes/send.js'
 
@@ -6,24 +6,20 @@ export const appExpress = express()
 
 appExpress.disable('x-powered-by')
 
-const ACCEPTED_ORIGINS = ['https://landing-page-huaraz.vercel.app']
+// const ACCEPTED_ORIGINS = ['https://landing-page-huaraz.vercel.app']
 
-const corsOptions: CorsOptions = {
-  origin: (origin, callback) => {
-    if (!origin) {
-      callback(null, true)
-      return
-    }
-    if (ACCEPTED_ORIGINS.includes(origin)) {
-      callback(null, true)
-      return
-    }
-    callback(new Error('Not allowed by CORS'))
-  },
-  optionsSuccessStatus: 200
-}
+// const corsOptions: CorsOptions = {
+//   origin: (origin, callback) => {
+//     if (!origin || ACCEPTED_ORIGINS.includes(origin)) {
+//       callback(null, true)
+//       return
+//     }
+//     callback(new Error('Not allowed by CORS'))
+//   },
+//   optionsSuccessStatus: 200
+// }
 
-appExpress.use(express.json(), cors(corsOptions))
+appExpress.use(express.json(), cors())
 
 appExpress.use('/send', sendRouter)
 
