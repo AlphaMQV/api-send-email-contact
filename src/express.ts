@@ -1,4 +1,4 @@
-import cors from 'cors'
+import cors, { type CorsOptions } from 'cors'
 import express from 'express'
 import { sendRouter } from './routes/send.js'
 
@@ -7,11 +7,11 @@ export const appExpress = express()
 appExpress.disable('x-powered-by')
 
 // Lista de orígenes permitidos
-const allowedOrigins = ['https://qaalphamqv.vercel.app', 'https://uatalphamqv.vercel.app', 'https://alphamqv.vercel.app']
+const allowedOrigins = ['https://landing-page-huaraz.vercel.app/']
 
-const corsOptions = {
+const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin ?? '')) {
       // Permitir el origen si está en la lista
       callback(null, true)
     } else {
