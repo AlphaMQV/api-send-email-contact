@@ -7,7 +7,7 @@ export const appExpress = express()
 appExpress.disable('x-powered-by')
 
 // Lista de orígenes permitidos
-const allowedOrigins = ['https://landing-page-huaraz.vercel.app/']
+const allowedOrigins = ['https://landing-page-huaraz.vercel.app']
 
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
