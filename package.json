@@ -1,15 +1,9 @@
 {
   "name": "api-send-email",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
     "dev": "node --loader ts-node/esm index.ts"
   },
-  "author": "Mayer",
-  "license": "ISC",
   "description": "Api send to email",
   "dependencies": {
     "cors": "^2.8.5",
