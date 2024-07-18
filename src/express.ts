@@ -2,7 +2,7 @@ import cors, { type CorsOptions } from 'cors'
 import express from 'express'
 import { sendRouter } from './routes/send.js'
 
-const appExpress = express()
+export const appExpress = express()
 
 appExpress.disable('x-powered-by')
 
@@ -27,6 +27,3 @@ appExpress.use('/send', sendRouter)
 appExpress.use((_, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' })
 })
-
-export { appExpress }
-
