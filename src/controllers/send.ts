@@ -1,14 +1,15 @@
+import { type Request, type Response } from 'express'
 import { type SendModel } from '../models/send.js'
 import { sendEmailSchema } from '../schemas/send-email.schema.js'
 
 export class SendController {
   model: SendModel
 
-  constructor ({ model }) {
+  constructor ({ model }: { model: SendModel }) {
     this.model = model
   }
 
-  sendEmail = async (req, res) => {
+  sendEmail = async (req: Request, res: Response) => {
     try {
       const requestBody = req.body
       // validar los datos

@@ -1,5 +1,5 @@
 import cors, { type CorsOptions } from 'cors'
-import express from 'express'
+import express, { type Request, type Response } from 'express'
 import { sendRouter } from './routes/send.js'
 
 export const appExpress = express()
@@ -22,7 +22,7 @@ const corsOptions: CorsOptions = {
 appExpress.use(express.json())
 appExpress.use(cors(corsOptions))
 
-appExpress.get('/', (_req, res) => {
+appExpress.get('/', (_req: Request, res: Response) => {
   res.send('API senc email corporative')
 })
 
