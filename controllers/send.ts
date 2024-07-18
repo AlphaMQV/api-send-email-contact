@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express'
-import { type SendModel } from '../models/send.js'
-import { sendEmailSchema } from '../schemas/send-email.schema.js'
+import { type SendModel } from '../models/send'
+import { sendEmailSchema } from '../schemas/send-email.schema'
 
 export class SendController {
   model: SendModel

@@ -1,10 +1,10 @@
 import cors, { type CorsOptions } from 'cors'
 import express, { type Request, type Response } from 'express'
-import { sendRouter } from './routes/send.js'
+import sendRouter from './routes/send'
 
-export const appExpress = express()
+const app = express()
 
-appExpress.disable('x-powered-by')
+app.disable('x-powered-by')
 
 const ACCEPTED_ORIGINS = ['https://landing-page-huaraz.vercel.app']
 
@@ -19,15 +19,21 @@ const corsOptions: CorsOptions = {
   optionsSuccessStatus: 200
 }
 
-appExpress.use(express.json())
-appExpress.use(cors(corsOptions))
+app.use(express.json())
+app.use(cors(corsOptions))
 
-appExpress.get('/', (_req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
   res.send('API senc email corporative')
 })
 
-appExpress.use('/send', sendRouter)
+app.use('/send', sendRouter)
 
-appExpress.use((_, res) => {
+app.use((_, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' })
 })
+
+const port = process.env.PORT ?? 80
+
+app.listen(port, () => { console.log(`Listen to port ${port}`) })
+
+export default app
