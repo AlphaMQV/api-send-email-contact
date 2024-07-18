@@ -22,6 +22,10 @@ const corsOptions: CorsOptions = {
 appExpress.use(express.json())
 appExpress.use(cors(corsOptions))
 
+appExpress.get('/', (_req, res) => {
+  res.send('API senc email corporative')
+})
+
 appExpress.use('/send', sendRouter)
 
 appExpress.use((_, res) => {
