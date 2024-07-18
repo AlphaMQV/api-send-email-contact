@@ -1,8 +1,8 @@
 import { type Request, type Response } from 'express'
-import { type SendModel } from '../models/send'
+import type SendModel from '../models/send'
 import { sendEmailSchema } from '../schemas/send-email.schema'
 
-export class SendController {
+class SendController {
   model: SendModel
 
   constructor ({ model }: { model: SendModel }) {
@@ -33,3 +33,5 @@ export class SendController {
     }
   }
 }
+
+export default SendController

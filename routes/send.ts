@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { SendController } from '../controllers/send'
-import { SendModel } from '../models/send'
+import SendController from '../controllers/send'
+import SendModel from '../models/send'
 
 const sendRouter = Router()
 

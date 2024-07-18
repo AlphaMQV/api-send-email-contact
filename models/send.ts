@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { Resend } from 'resend'
 import { type SendEmailI, type SendEmailResponseI } from '../interfaces/send-email'
 
-export class SendModel {
+class SendModel {
   private readonly resend = new Resend(process.env.API_KEY_RESEND)
 
   sendEmail = async (requestBody: SendEmailI): Promise<SendEmailResponseI> => {
@@ -33,3 +33,5 @@ export class SendModel {
     }
   }
 }
+
+export default SendModel
