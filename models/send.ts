@@ -32,7 +32,7 @@ class SendModel {
           <p><strong>Origen:</strong> ${message.origin}</p>
           <p><strong>Nombres:</strong> ${message.client.names}</p>
           <p><strong>Teléfono:</strong> ${message.client.phone}</p>
-          <p>data: ${JSON.stringify(message)}</p>
+          <p><strong>Fecha:</strong> ${message.datetime}</p>
         `
       })
       return {

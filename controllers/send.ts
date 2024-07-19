@@ -1,4 +1,5 @@
 import { type Request, type Response } from 'express'
+import { type ReceivedDataI } from '../interfaces/send-email'
 import type SendModel from '../models/send'
 import { sendEmailSchema } from '../schemas/send-email.schema'
 
@@ -11,9 +12,9 @@ class SendController {
 
   sendEmail = async (req: Request, res: Response) => {
     try {
-      const requestBody = req.body
+      const requestBody: ReceivedDataI = req.body
       // validar los datos
-      const result = sendEmailSchema.safeParse(requestBody)
+      const result = sendEmailSchema.safeParse(requestBody.client)
       // si no es valido
       if (!result.success) {
         res.status(400).json({ errors: result.error.errors })
