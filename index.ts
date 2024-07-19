@@ -6,7 +6,7 @@ const app = express()
 
 app.disable('x-powered-by')
 
-const ACCEPTED_ORIGINS = ['https://landing-page-huaraz.vercel.app']
+const ACCEPTED_ORIGINS = ['https://landing-page-huaraz.vercel.app', 'https://paquetes.masquevacaciones.com.pe/']
 
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
