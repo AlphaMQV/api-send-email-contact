@@ -1,7 +1,13 @@
-export interface SendEmailI {
-  names: string
-  email: string
-  phone: string
+export interface ReceivedDataI {
+  origin: string
+  client: {
+    names: string
+    phone: string
+  }
+}
+
+export interface SendDataI extends ReceivedDataI {
+  datetime: string
 }
 
 export interface SendEmailResponseI {
