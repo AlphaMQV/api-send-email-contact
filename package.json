@@ -2,7 +2,7 @@
   "name": "api-send-email",
   "version": "1.0.0",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
   },
   "description": "Api send to email",
   "dependencies": {

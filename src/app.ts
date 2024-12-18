@@ -23,7 +23,7 @@ app.use(express.json())
 app.use(cors(corsOptions))
 
 app.get('/', (_req: Request, res: Response) => {
-  res.send('API senc email corporative')
+  res.send('API send email corporative')
 })
 
 app.use('/send', sendRouter)

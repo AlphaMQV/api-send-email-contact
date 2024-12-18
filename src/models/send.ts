@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import { Resend } from 'resend'
 import { type ReceivedDataI, type SendDataI, type SendEmailResponseI } from '../interfaces/send-email'
+import { dateFormat } from '../libs/date-format'
 
 class SendModel {
   private readonly resend = new Resend(process.env.API_KEY_RESEND)
@@ -9,7 +10,7 @@ class SendModel {
   private formatMessage (data: ReceivedDataI): SendDataI {
     return {
       ...data,
-      datetime: new Date().toString()
+      datetime: dateFormat(new Date())
     }
   }
 
@@ -29,7 +30,7 @@ class SendModel {
         subject: `Contacto de Cliente: ${message.origin}`,
         html: `
           <h1>Contacto de Cliente</h1>
-          <p><strong>Origen:</strong> ${message.origin}</p>
+          <p><strong>Origen de Paquete:</strong> ${message.origin}</p>
           <p><strong>Nombres:</strong> ${message.client.names}</p>
           <p><strong>Teléfono:</strong> ${message.client.phone}</p>
           <p><strong>Fecha:</strong> ${message.datetime}</p>
