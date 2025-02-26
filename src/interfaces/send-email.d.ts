@@ -2,7 +2,7 @@ export interface ReceivedDataI {
   origin: string
   client: {
     names: string
-    phone: string
+    email: string
   }
 }
 

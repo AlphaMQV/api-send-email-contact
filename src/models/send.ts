@@ -1,13 +1,13 @@
-import 'dotenv/config'
 import { Resend } from 'resend'
+import { API_KEY_RESEND, EMAIL_RECEIVE } from '../core/config'
 import { type ReceivedDataI, type SendDataI, type SendEmailResponseI } from '../interfaces/send-email'
 import { dateFormat } from '../libs/date-format'
 
 class SendModel {
-  private readonly resend = new Resend(process.env.API_KEY_RESEND)
-  private readonly emailReceive = process.env.EMAIL_RECEIVE ?? 'base@correo.com'
+  private readonly resend = new Resend(API_KEY_RESEND)
+  private readonly emailReceive = EMAIL_RECEIVE
 
-  private formatMessage (data: ReceivedDataI): SendDataI {
+  private formatMessage(data: ReceivedDataI): SendDataI {
     return {
       ...data,
       datetime: dateFormat(new Date())
@@ -16,8 +16,8 @@ class SendModel {
 
   sendEmail = async (requestBody: ReceivedDataI): Promise<SendEmailResponseI> => {
     try {
-      const { client: { names, phone } } = requestBody
-      if (!names || !phone) {
+      const { client: { names, email } } = requestBody
+      if (!names || !email) {
         return {
           status: 'error',
           message: 'Campos inválidos'
@@ -32,7 +32,7 @@ class SendModel {
           <h1>Contacto de Cliente</h1>
           <p><strong>Origen de Paquete:</strong> ${message.origin}</p>
           <p><strong>Nombres:</strong> ${message.client.names}</p>
-          <p><strong>Teléfono:</strong> ${message.client.phone}</p>
+          <p><strong>Correo:</strong> ${message.client.email}</p>
           <p><strong>Fecha:</strong> ${message.datetime}</p>
         `
       })

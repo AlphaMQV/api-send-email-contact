@@ -1,12 +1,11 @@
 import cors, { type CorsOptions } from 'cors'
 import express, { type Request, type Response } from 'express'
+import { ACCEPTED_ORIGINS, PORT } from './core/config'
 import sendRouter from './routes/send'
 
 const app = express()
 
 app.disable('x-powered-by')
-
-const ACCEPTED_ORIGINS = ['https://landing-page-huaraz.vercel.app', 'https://paquetes.masquevacaciones.com.pe']
 
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
@@ -32,8 +31,6 @@ app.use((_, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' })
 })
 
-const port = process.env.PORT ?? 80
-
-app.listen(port, () => { console.log(`Listen to port ${port}`) })
+app.listen(PORT, () => { console.log(`Listen to port ${PORT}`) })
 
 export default app
